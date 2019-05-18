@@ -53,11 +53,15 @@ export default class extends Emitter {
   }
 
   serviceUp(service) {
-    this.emit('serviceUp', this._normalizeService(service));
+    if (service.name || service.fullname) {
+      this.emit('serviceUp', this._normalizeService(service));
+    }
   }
 
   serviceDown(service) {
-    this.emit('serviceDown', this._normalizeService(service));
+    if (service.name || service.fullname) {
+      this.emit('serviceDown', this._normalizeService(service));
+    }
   }
 
   stop() {
@@ -75,7 +79,7 @@ export default class extends Emitter {
     normalized.name = service.name || service.fullname.substring(0, service.fullname.indexOf('.'));
     normalized.txtRecord = service.txtRecord || (() => {
       const records = {};
-      service.txt.forEach((item) => {
+      (service.txt || []).forEach((item) => {
         const key = item.substring(0, item.indexOf('='));
         const value = item.substring(item.indexOf('=') + 1);
         records[key] = value;
