@@ -1,5 +1,5 @@
 {
-  "name": "node-mdns-easy-local",
+  "name": "node-mdns-easy",
   "version": "1.0.5",
   "description": "Node.JS MDNS that just works regardless of OS level dependencies",
   "main": "dist/mdns.js",
@@ -27,7 +27,7 @@
     "eslint-plugin-import": "^1.8.1"
   },
   "dependencies": {
-    "mdns": "^2.4.0",
+    "mdns": "^2.5.1",
     "mdns-js": "^1.0.3"
   }
 }
